@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "todolist-angul": {
+      "hosting": {
+        "todolist": [
+          "todolist-angul"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "todolist-angul"
+  }
+}
