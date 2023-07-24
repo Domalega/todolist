@@ -13,6 +13,7 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { CookieBannerComponent } from './component/coockie-banner/coockie-banner.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     LoginComponent,
     RegistrationComponent,
     DashboardComponent,
+    CookieBannerComponent,
   ],
   imports: [
     BrowserModule,

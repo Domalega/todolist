@@ -13,7 +13,7 @@ export class AuthService {
       await this.auth.signInWithEmailAndPassword(email, password);
       const today = new Date();
       today.setTime(today.getTime() + 7 * 24 * 60 * 60 * 1000);
-      const expires = 'expires=' + today.toString();
+      const expires = 'expires=' + today.toUTCString();
       document.cookie = `token=true; ${expires}`;
       this.router.navigate(['/dashboard']);
     } catch (error) {

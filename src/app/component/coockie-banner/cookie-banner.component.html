@@ -1,0 +1,12 @@
+<div *ngIf="isBannerOpen">
+  <p class="font-light text-xl">
+    This site uses cookies to improve your web experience. By clicking "Accept"
+    you agree to the use of cookies.
+  </p>
+  <button
+    class="bg-lime-800 text-white rounded p-2 mt-2 font-thin text-xl hover:bg-lime-600 duration-100 active:scale-95"
+    (click)="closeBanner()"
+  >
+    Accept
+  </button>
+</div>
