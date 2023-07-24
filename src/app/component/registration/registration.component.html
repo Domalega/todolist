@@ -6,25 +6,25 @@
       [(ngModel)]="email"
       name="email"
       placeholder="Enter your email"
-      class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-800"
+      class="text-xs lg:text-2xl px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-800"
     />
     <input
       type="password"
       [(ngModel)]="password"
       name="password"
       placeholder="Enter your password"
-      class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-800"
+      class="text-xs lg:text-2xl px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-800"
     />
     <div class="flex justify-between items-center gap-2">
       <button
         (click)="registration()"
         type="submit"
-        class="bg-lime-800 whitespace-nowrap text-white px-4 py-2 w-1/4 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
+        class="text-xs lg:text-2xl bg-lime-800 whitespace-nowrap text-white px-4 py-2 w-1/4 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
       >
         Sing Up
       </button>
 
-      <label class="font-light"
+      <label class="font-light text-xs lg:text-2xl"
         >If you already have an account go to
         <a
           href="/login"
@@ -35,4 +35,6 @@
     </div>
   </form>
 </div>
-<app-cookie-banner class="absolute bottom-0 p-4 m-4 border shadow-xl z-50" />
+<app-cookie-banner
+  class="absolute bottom-0 p-4 m-4 border shadow-xl z-50 w-5/6 lg:w-4/6"
+/>

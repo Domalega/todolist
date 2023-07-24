@@ -10,7 +10,7 @@ export class CookieBannerComponent {
   ngOnInit() {
     const cookies = document.cookie.split(';');
     for (let cookie of cookies) {
-      if (cookie.trim() == 'acceptCookie=true') this.isBannerOpen = false;
+      if (cookie.trim() == 'acceptCookie=true') this.isBannerOpen = true;
     }
   }
   closeBanner() {
