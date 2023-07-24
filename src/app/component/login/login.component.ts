@@ -27,4 +27,8 @@ export class LoginComponent {
       console.log(error);
     }
   }
+
+  async resetPassword() {
+    this.auth.resetPassword(this.email);
+  }
 }

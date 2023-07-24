@@ -15,7 +15,7 @@ export class AuthService {
       today.setTime(today.getTime() + 7 * 24 * 60 * 60 * 1000);
       const expires = 'expires=' + today.toUTCString();
       document.cookie = `token=true; ${expires}`;
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/todolist']);
     } catch (error) {
       console.log(error);
       alert('Email or password is wrong');
@@ -31,6 +31,15 @@ export class AuthService {
       console.log(error);
       alert('Login is busy');
       this.router.navigate(['/registration']);
+    }
+  }
+
+  async resetPassword(email: string) {
+    try {
+      await this.auth.sendPasswordResetEmail(email);
+      alert('Letter to change password was sent');
+    } catch (error) {
+      console.log(error);
     }
   }
 

@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
+  selector: 'app-todolist',
+  templateUrl: './todolist.component.html',
 })
-export class DashboardComponent {
+export class TodolistComponent {
   constructor(private auth: AuthService) {}
   logOut() {
     this.auth.logOut();
