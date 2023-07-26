@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
+  userEmail: string | null = null;
   constructor(private auth: AngularFireAuth, private router: Router) {}
 
   async login(email: string, password: string) {
@@ -15,6 +16,7 @@ export class AuthService {
       today.setTime(today.getTime() + 7 * 24 * 60 * 60 * 1000);
       const expires = 'expires=' + today.toUTCString();
       document.cookie = `token=true; ${expires}`;
+      document.cookie = `email=${email}; ${expires}`;
       this.router.navigate(['/todolist']);
     } catch (error) {
       console.log(error);
@@ -32,6 +34,24 @@ export class AuthService {
       alert('Login is busy');
       this.router.navigate(['/registration']);
     }
+  }
+
+  async getEmail(): Promise<string | null | undefined> {
+    try {
+      const user = await this.auth.currentUser;
+      return user?.email;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
+
+  isAuth(): boolean {
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+      if (cookie.trim() == 'token=true') return true;
+    }
+    return false;
   }
 
   async resetPassword(email: string) {

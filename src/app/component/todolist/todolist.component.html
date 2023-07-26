@@ -1,4 +1,4 @@
-<div
+<nav
   class="absolute top-0 h-16 w-screen flex items-center shadow-lg justify-between"
 >
   <button
@@ -8,21 +8,38 @@
     LogOut
   </button>
   <h1 class="text-center lg:text-3xl font-thin m-6">TODOLIST</h1>
-</div>
-<div class="h-screen flex justify-center items-center">
+</nav>
+<main class="h-screen flex justify-center items-center mx-4">
   <div class="container shadow-lg h-3/5">
     <h1 class="text-center text-3xl font-thin">TODOLIST</h1>
-    <label class="flex items-center">
+    <ul>
+      <li class="active:ring-lime-600 flex items-center justify-between p-4">
+        <span><strong class="mr-2">1</strong>Some data</span>
+        <button
+          class="w-36 bg-lime-800 whitespace-nowrap text-white px-4 py-2 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
+        >
+          Remove
+        </button>
+      </li>
+    </ul>
+
+    <form
+      class="flex items-center p-4 gap-2"
+      (ngSubmit)="submit()"
+      [formGroup]="form"
+    >
       <input
+        formControlName="title"
         type="text"
         placeholder="Buy bread..."
         class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-800 w-full"
       />
       <button
-        class="absolute right-6 rounded-full bg-lime-800 hover:bg-lime-500 duration-100"
+        [disabled]="form.invalid"
+        class="w-40 bg-lime-800 whitespace-nowrap text-white px-4 py-2 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
       >
-        Удолить
+        Add
       </button>
-    </label>
+    </form>
   </div>
-</div>
+</main>

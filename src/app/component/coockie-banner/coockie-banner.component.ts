@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-cookie-banner',
   templateUrl: './cookie-banner.component.html',
 })
-export class CookieBannerComponent {
+export class CookieBannerComponent implements OnInit {
   isBannerOpen: boolean = true;
 
   ngOnInit() {
@@ -13,6 +13,7 @@ export class CookieBannerComponent {
       if (cookie.trim() == 'acceptCookie=true') this.isBannerOpen = false;
     }
   }
+
   closeBanner() {
     this.isBannerOpen = false;
     const today = new Date();

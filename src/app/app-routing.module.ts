@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'todolist',
     component: TodolistComponent,
   },
+  {
+    path: '**',
+    redirectTo: 'login',
+  },
 ];
 
 @NgModule({
