@@ -46,6 +46,15 @@ export class AuthService {
     }
   }
 
+  async getUserId(): Promise<string | null | undefined> {
+    try {
+      const user = await this.auth.currentUser;
+      return user?.uid;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
   isAuth(): boolean {
     const cookies = document.cookie.split(';');
     for (let cookie of cookies) {

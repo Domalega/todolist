@@ -13,9 +13,8 @@ export class BdWorkService {
 
   async addNote(note: Note) {
     const someData = await this.http
-      .post<any>(`${BdWorkService.url}/${note.id}.json`, note)
+      .post<any>(`${BdWorkService.url}/${note.userId}.json`, note)
       .toPromise();
-    console.log(`${BdWorkService.url}/${note.email}.json`);
     console.log(someData);
 
     return someData;

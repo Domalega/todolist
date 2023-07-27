@@ -4,6 +4,7 @@ import { BdWorkService } from 'src/app/service/bd-work.service';
 import { Note } from 'src/app/model/note';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { user } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-todolist',
@@ -31,8 +32,10 @@ export class TodolistComponent implements OnInit {
     try {
       const { title } = this.form.value;
       const userEmail = await this.authService.getEmail();
+      const userId = await this.authService.getUserId();
 
       const note: Note = {
+        userId: <string>userId,
         content: title,
         date: new Date().toUTCString(),
         email: <string>userEmail,
