@@ -1,27 +1,27 @@
-# Todolist
+## Project Title
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.5.
+Angular-Firebase Project
 
-## Development server
+## Description
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This project was created using Angular version 16.1.5 and Firebase. It is a web application that utilizes the Angular framework for the frontend and the Firebase platform for the backend.
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular version 16.1.5
+- Integration with Firebase for backend services
 
-## Build
+## Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clone the repository.
+2. Run the command `npm install` to install the project dependencies.
 
-## Running unit tests
+## Usage
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Run the command ng serve to start the development server.
+2. Navigate to http://localhost:4200 to access the application.
 
-## Running end-to-end tests
+## Technologies Used
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Angular
+- Firebase
