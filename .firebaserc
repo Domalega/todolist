@@ -1,4 +1,7 @@
 {
+  "projects": {
+    "default": "todolist-angul"
+  },
   "targets": {
     "todolist-angul": {
       "hosting": {
@@ -6,9 +9,14 @@
           "todolist-angul"
         ]
       }
+    },
+    "todolist-angula": {
+      "hosting": {
+        "todolist": [
+          "src"
+        ]
+      }
     }
   },
-  "projects": {
-    "default": "todolist-angul"
-  }
+  "etags": {}
 }

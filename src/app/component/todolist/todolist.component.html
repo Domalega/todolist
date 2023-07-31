@@ -1,16 +1,16 @@
 <nav
-  class="absolute top-0 h-16 w-screen flex items-center shadow-lg justify-between"
+  class="bg-white fixed top-0 h-16 w-screen flex items-center shadow-lg justify-between z-10"
 >
   <button
     class="bg-lime-800 lg:text-2xl m-6 font-thin whitespace-nowrap text-white px-4 py-2 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
     (click)="logOut()"
   >
-    LogOut
+    Log Out
   </button>
   <h1 class="text-center lg:text-3xl font-thin m-6">TODOLIST</h1>
 </nav>
 <main class="h-screen flex justify-center items-center mx-4">
-  <div class="container shadow-lg">
+  <div class="container shadow-lg max-h-[calc(100vh-10rem)] overflow-y-auto">
     <h1 class="text-center text-3xl font-thin">TODOLIST</h1>
     <ul *ngIf="notes">
       <li

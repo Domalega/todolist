@@ -85,7 +85,7 @@ export class AuthService {
   async resetPassword(email: string) {
     try {
       await this.auth.sendPasswordResetEmail(email);
-      alert('Letter to change password was sent');
+      alert(`Letter to change password was sent to ${email}`);
     } catch (error) {
       console.log(error);
     }
