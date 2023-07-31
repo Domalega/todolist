@@ -5,6 +5,8 @@ import { Note } from 'src/app/model/note';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { user } from '@angular/fire/auth';
+import { map } from 'rxjs';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-todolist',
@@ -12,6 +14,7 @@ import { user } from '@angular/fire/auth';
 })
 export class TodolistComponent implements OnInit {
   form: FormGroup;
+  notes: Note[] | null = null;
 
   constructor(
     private authService: AuthService,
@@ -26,6 +29,8 @@ export class TodolistComponent implements OnInit {
     this.form = new FormGroup({
       title: new FormControl('', Validators.required),
     });
+
+    this.getNotes();
   }
 
   async submit() {
@@ -41,12 +46,35 @@ export class TodolistComponent implements OnInit {
         email: <string>userEmail,
       };
 
-      const createNote = await this.bdService.addNote(note);
-      if (createNote) this.form.reset();
+      this.bdService.addNote(note).subscribe((note) => {
+        this.form.reset();
+        this.getNotes();
+      });
     } catch (error) {
       console.log(error);
     }
   }
+
+  deleteNote(note: Note) {
+    this.bdService.deleteNote(note).subscribe(() => {
+      this.getNotes();
+    });
+  }
+
+  getNotes() {
+    const isAuth = this.authService.isAuth();
+    if (!isAuth) this.router.navigate(['/login']);
+
+    this.authService.getUserIdRXJS().subscribe((user) => {
+      this.bdService
+        .getNote(<string>user?.uid)
+        .pipe(map((notesFromBD) => Object.values(notesFromBD)))
+        .subscribe((notesFromBD) => {
+          this.notes = notesFromBD;
+        });
+    });
+  }
+
   logOut() {
     this.authService.logOut();
   }

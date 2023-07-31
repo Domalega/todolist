@@ -10,13 +10,20 @@
   <h1 class="text-center lg:text-3xl font-thin m-6">TODOLIST</h1>
 </nav>
 <main class="h-screen flex justify-center items-center mx-4">
-  <div class="container shadow-lg h-3/5">
+  <div class="container shadow-lg">
     <h1 class="text-center text-3xl font-thin">TODOLIST</h1>
-    <ul>
-      <li class="active:ring-lime-600 flex items-center justify-between p-4">
-        <span><strong class="mr-2">1</strong>Some data</span>
+    <ul *ngIf="notes">
+      <li
+        class="active:ring-lime-600 flex items-center justify-between p-4 border-b-4"
+        *ngFor="let note of notes; let i = index"
+      >
+        <span class="font-light text-xl"
+          ><strong class="mr-2">{{ i + 1 }}</strong
+          >{{ note.content }}</span
+        >
         <button
-          class="w-36 bg-lime-800 whitespace-nowrap text-white px-4 py-2 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
+          class="lg:w-36 bg-lime-800 whitespace-nowrap text-white px-4 py-2 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
+          (click)="deleteNote(note)"
         >
           Remove
         </button>
