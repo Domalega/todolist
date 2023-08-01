@@ -1,0 +1,26 @@
+language: node_js
+node_js:
+  - "12"
+dist: trusty
+sudo: required
+branches:
+  only:
+    - master
+cache:
+  directories:
+    - node_modules
+addons:
+  chrome: stable
+before_script:
+  - npm install -g @angular/cli
+install:
+  - np
+script:
+  - ng lint
+  - ng test --watch=false --browsers=ChromeHeadlessNoSandbox
+  - ng build --prod
+deploy:
+  provider: firebase
+  token:
+    secure: AIzaSyC01Mjfdzzbb8EZUOCffpghvrTYXI3YnF8
+  project: 1:123526340851:web:593a54ada0262643ca1786
