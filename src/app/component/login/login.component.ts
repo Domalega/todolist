@@ -9,13 +9,21 @@ import { AuthService } from 'src/app/service/auth.service';
 export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
-  isBannerOpen: boolean = true;
+  isBannerOpen: boolean;
 
   constructor(private auth: AuthService, private router: Router) {}
 
   ngOnInit() {
     const isAuth = this.auth.isAuth();
     if (isAuth) this.router.navigate(['/todolist']);
+
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+      if (cookie.trim() == 'acceptCookie=true') {
+        this.isBannerOpen = false;
+        break;
+      } else this.isBannerOpen = true;
+    }
   }
 
   async login() {
