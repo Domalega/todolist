@@ -4,17 +4,30 @@ import { BdWorkService } from 'src/app/service/bd-work.service';
 import { Note } from 'src/app/model/note';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { user } from '@angular/fire/auth';
 import { map } from 'rxjs';
-import { v4 as uuidv4 } from 'uuid';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-todolist',
   templateUrl: './todolist.component.html',
+  animations: [
+    trigger('slideOut', [
+      state('in', style({ transform: 'translateX(0)' })),
+      state('out', style({ transform: 'translateX(100%)' })),
+      transition('in => out', animate('300ms ease-out')),
+    ]),
+  ],
 })
 export class TodolistComponent implements OnInit {
   form: FormGroup;
   notes: Note[] | null = null;
+  noteToDelete: any;
 
   constructor(
     private authService: AuthService,
@@ -53,6 +66,13 @@ export class TodolistComponent implements OnInit {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  deleteNoteWithTransition(note: any) {
+    this.noteToDelete = note;
+    setTimeout(() => {
+      this.deleteNote(note);
+    }, 300);
   }
 
   deleteNote(note: Note) {

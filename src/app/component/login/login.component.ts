@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/service/auth.service';
 export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
+  isBannerOpen: boolean = true;
 
   constructor(private auth: AuthService, private router: Router) {}
 

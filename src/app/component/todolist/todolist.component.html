@@ -14,6 +14,7 @@
     <h1 class="text-center text-3xl font-thin">TODOLIST</h1>
     <ul *ngIf="notes">
       <li
+        [@slideOut]="noteToDelete === note ? 'out' : 'in'"
         class="active:ring-lime-600 flex items-center justify-between p-4 border-b-4"
         *ngFor="let note of notes; let i = index"
       >
