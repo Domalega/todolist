@@ -68,20 +68,6 @@ export class AuthService {
     return false;
   }
 
-  // возможно удалить
-  async setCookie(name: string) {
-    const cookies = document.cookie.split(';');
-    for (let cookie of cookies) {
-      if (cookie.trim() == 'id') return;
-    }
-    const userId = await this.getUserId();
-
-    const today = new Date();
-    today.setTime(today.getTime() + 7 * 24 * 60 * 60 * 1000);
-    const expires = 'expires=' + today.toUTCString();
-    document.cookie = `${name}=${userId}; ${expires}`;
-  }
-
   async resetPassword(email: string) {
     try {
       await this.auth.sendPasswordResetEmail(email);

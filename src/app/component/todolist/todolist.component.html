@@ -1,53 +1,64 @@
-<nav
-  class="bg-white fixed top-0 h-16 w-screen flex items-center shadow-lg justify-between z-10"
->
-  <button
-    class="bg-lime-800 lg:text-2xl m-6 font-thin whitespace-nowrap text-white px-4 py-2 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
-    (click)="logOut()"
+<body>
+  <nav
+    class="bg-white fixed top-0 h-16 w-screen flex items-center shadow-lg justify-between z-10"
   >
-    Log Out
-  </button>
-  <h1 class="text-center lg:text-3xl font-thin m-6">TODOLIST</h1>
-</nav>
-<main class="h-screen flex justify-center items-center mx-4">
-  <div class="container shadow-lg max-h-[calc(100vh-10rem)] overflow-y-auto">
-    <h1 class="text-center text-3xl font-thin">TODOLIST</h1>
-    <ul *ngIf="notes">
-      <li
-        [@slideOut]="noteToDelete === note ? 'out' : 'in'"
-        class="active:ring-lime-600 flex items-center justify-between p-4 border-b-4"
-        *ngFor="let note of notes; let i = index"
-      >
-        <span class="font-light text-xl"
-          ><strong class="mr-2">{{ i + 1 }}</strong
-          >{{ note.content }}</span
-        >
-        <button
-          class="lg:w-36 bg-lime-800 whitespace-nowrap text-white px-4 py-2 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
-          (click)="deleteNote(note)"
-        >
-          Remove
-        </button>
-      </li>
-    </ul>
-
-    <form
-      class="flex items-center p-4 gap-2"
-      (ngSubmit)="submit()"
-      [formGroup]="form"
+    <button
+      class="bg-lime-800 lg:text-2xl m-6 font-thin whitespace-nowrap text-white px-4 py-2 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
+      (click)="logOut()"
     >
-      <input
-        formControlName="title"
-        type="text"
-        placeholder="Buy bread..."
-        class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-800 w-full"
-      />
+      Log Out
+    </button>
+    <div class="flex items-center">
       <button
-        [disabled]="form.invalid"
-        class="w-40 bg-lime-800 whitespace-nowrap text-white px-4 py-2 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
+        (click)="changeColors()"
+        class="bg-lime-800 lg:text-2xl m-6 font-thin whitespace-nowrap text-white px-4 py-2 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
       >
-        Add
+        Change colors
       </button>
-    </form>
-  </div>
-</main>
+      <h1 class="text-center lg:text-3xl font-thin m-6">TODOLIST</h1>
+    </div>
+  </nav>
+  <main class="h-screen flex justify-center items-center mx-4 bg-white">
+    <div class="container shadow-lg max-h-[calc(100vh-10rem)] overflow-y-auto">
+      <h1 class="text-center text-3xl font-thin">TODOLIST</h1>
+      <ul *ngIf="notes">
+        <li
+          [@slideOut]="noteToDelete === note ? 'out' : ''"
+          class="active:ring-lime-600 flex items-center justify-between p-4 border-b-4 bg-white"
+          *ngFor="let note of notes; let i = index"
+        >
+          <span class="font-light text-xl"
+            ><strong class="mr-2">{{ i + 1 }}</strong
+            >{{ note.content }}</span
+          >
+          <button
+            class="lg:w-36 bg-lime-800 whitespace-nowrap text-white px-4 py-2 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
+            (click)="deleteNoteWithTransition(note)"
+          >
+            Remove
+          </button>
+        </li>
+      </ul>
+
+      <form
+        class="flex items-center p-4 gap-2 ng-pristine ng-untouched ng-valid"
+        (ngSubmit)="submit()"
+        [formGroup]="form"
+      >
+        <input
+          formControlName="title"
+          type="text"
+          placeholder="Buy bread..."
+          class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-800 w-full"
+          required
+        />
+        <button
+          [disabled]="form.invalid || isSubmit"
+          class="w-40 bg-lime-800 whitespace-nowrap text-white px-4 py-2 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
+        >
+          Add
+        </button>
+      </form>
+    </div>
+  </main>
+</body>

@@ -5,28 +5,17 @@ import { Note } from 'src/app/model/note';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-} from '@angular/animations';
+import { noteWorks } from '../../animation/notesWork';
 
 @Component({
   selector: 'app-todolist',
   templateUrl: './todolist.component.html',
-  animations: [
-    trigger('slideOut', [
-      state('in', style({ transform: 'translateX(0)' })),
-      state('out', style({ transform: 'translateX(100%)' })),
-      transition('in => out', animate('300ms ease-out')),
-    ]),
-  ],
+  animations: [noteWorks],
 })
 export class TodolistComponent implements OnInit {
   form: FormGroup;
   notes: Note[] | null = null;
+  isSubmit: boolean = false;
   noteToDelete: any;
 
   constructor(
@@ -48,6 +37,7 @@ export class TodolistComponent implements OnInit {
 
   async submit() {
     try {
+      this.isSubmit = true;
       const { title } = this.form.value;
       const userEmail = await this.authService.getEmail();
       const userId = await this.authService.getUserId();
@@ -59,7 +49,8 @@ export class TodolistComponent implements OnInit {
         email: <string>userEmail,
       };
 
-      this.bdService.addNote(note).subscribe((note) => {
+      this.bdService.addNote(note).subscribe(() => {
+        this.isSubmit = false;
         this.form.reset();
         this.getNotes();
       });
@@ -68,7 +59,7 @@ export class TodolistComponent implements OnInit {
     }
   }
 
-  deleteNoteWithTransition(note: any) {
+  deleteNoteWithTransition(note: Note) {
     this.noteToDelete = note;
     setTimeout(() => {
       this.deleteNote(note);
@@ -94,6 +85,8 @@ export class TodolistComponent implements OnInit {
         });
     });
   }
+
+  changeColors() {}
 
   logOut() {
     this.authService.logOut();

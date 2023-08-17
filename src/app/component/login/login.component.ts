@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/service/auth.service';
 export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
+  theme: string;
   isBannerOpen: boolean;
 
   constructor(private auth: AuthService, private router: Router) {}
@@ -23,6 +24,13 @@ export class LoginComponent implements OnInit {
         this.isBannerOpen = false;
         break;
       } else this.isBannerOpen = true;
+    }
+
+    for (let cookie of cookies) {
+      if (cookie.trim().startsWith('theme')) {
+        this.theme = cookie.slice('theme'.length + 2);
+        break;
+      }
     }
   }
 

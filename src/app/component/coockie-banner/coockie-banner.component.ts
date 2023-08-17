@@ -7,11 +7,15 @@ import { Component, OnInit } from '@angular/core';
 export class CookieBannerComponent implements OnInit {
   isBannerOpen: boolean = true;
 
-  ngOnInit() {
+  getDataCookieBanner() {
     const cookies = document.cookie.split(';');
     for (let cookie of cookies) {
       if (cookie.trim() == 'acceptCookie=true') this.isBannerOpen = false;
     }
+  }
+
+  ngOnInit() {
+    this.getDataCookieBanner();
   }
 
   closeBanner() {
