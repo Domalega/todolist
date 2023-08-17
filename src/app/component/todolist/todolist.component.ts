@@ -32,6 +32,9 @@ export class TodolistComponent implements OnInit {
       title: new FormControl('', Validators.required),
     });
 
+    const defaultTheme = localStorage.getItem('theme');
+    if (defaultTheme === null) localStorage.setItem('theme', 'light');
+
     this.getNotes();
   }
 
@@ -86,7 +89,25 @@ export class TodolistComponent implements OnInit {
     });
   }
 
-  changeColors() {}
+  changeTheme() {
+    const theme = localStorage.getItem('theme');
+
+    if (theme == 'light') {
+      const body = document.getElementById('bodyTodo');
+      if (body) {
+        body.classList.add(`dark`);
+        body.classList.remove('light');
+        localStorage.setItem('theme', 'dark');
+      }
+    } else if (theme == 'dark') {
+      const body = document.getElementById('bodyTodo');
+      if (body) {
+        body.classList.add(`light`);
+        body.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+  }
 
   logOut() {
     this.authService.logOut();

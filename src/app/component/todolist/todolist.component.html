@@ -1,6 +1,6 @@
-<body>
+<body id="bodyTodo" class="dark">
   <nav
-    class="bg-white fixed top-0 h-16 w-screen flex items-center shadow-lg justify-between z-10"
+    class="bg-gradient-to-b dark:to-gray-700 dark:from-gray-900 dark:text-white dark:border-gray-900 bg-white fixed top-0 h-16 w-screen flex items-center justify-between z-10"
   >
     <button
       class="bg-lime-800 lg:text-2xl m-6 font-thin whitespace-nowrap text-white px-4 py-2 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
@@ -10,21 +10,23 @@
     </button>
     <div class="flex items-center">
       <button
-        (click)="changeColors()"
+        (click)="changeTheme()"
         class="bg-lime-800 lg:text-2xl m-6 font-thin whitespace-nowrap text-white px-4 py-2 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
       >
-        Change colors
+        Change theme
       </button>
       <h1 class="text-center lg:text-3xl font-thin m-6">TODOLIST</h1>
     </div>
   </nav>
-  <main class="h-screen flex justify-center items-center mx-4 bg-white">
+  <main
+    class="dark:bg-gray-950 dark:text-white bg-white h-screen flex justify-center items-center"
+  >
     <div class="container shadow-lg max-h-[calc(100vh-10rem)] overflow-y-auto">
       <h1 class="text-center text-3xl font-thin">TODOLIST</h1>
       <ul *ngIf="notes">
         <li
           [@slideOut]="noteToDelete === note ? 'out' : ''"
-          class="active:ring-lime-600 flex items-center justify-between p-4 border-b-4 bg-white"
+          class="bg-gradient-to-r dark:to-gray-700 dark:from-gray-900 dark:text-white bg-white rounded-sm m-2 p-4 dark:border-b-0 border-b-4 active:ring-lime-600 flex items-center justify-between"
           *ngFor="let note of notes; let i = index"
         >
           <span class="font-light text-xl"
@@ -41,7 +43,7 @@
       </ul>
 
       <form
-        class="flex items-center p-4 gap-2 ng-pristine ng-untouched ng-valid"
+        class="dark:bg-gray-900 dark:text-white m-2 p-4 flex items-center gap-2 ng-pristine ng-untouched ng-valid"
         (ngSubmit)="submit()"
         [formGroup]="form"
       >
@@ -49,7 +51,7 @@
           formControlName="title"
           type="text"
           placeholder="Buy bread..."
-          class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-800 w-full"
+          class="dark:text-black px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-800 w-full"
           required
         />
         <button

@@ -1,40 +1,47 @@
-<div class="bg-gray-100 h-screen flex items-center justify-center">
-  <form class="container p-6 rounded-lg shadow-2xl grid gap-3">
-    <h1 class="text-center font-thin text-3xl cursor-default">TODOLIST</h1>
-    <input
-      type="email"
-      [(ngModel)]="email"
-      name="email"
-      placeholder="Enter your email"
-      class="text-xs lg:text-2xl px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-800"
-    />
-    <input
-      type="password"
-      [(ngModel)]="password"
-      name="password"
-      placeholder="Enter your password"
-      class="text-xs lg:text-2xl px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-800"
-    />
-    <div class="flex justify-between items-center gap-2">
-      <button
-        (click)="registration()"
-        type="submit"
-        class="text-xs lg:text-2xl bg-lime-800 whitespace-nowrap text-white px-4 py-2 w-1/4 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
-      >
-        Sing Up
-      </button>
+<body class="dark">
+  <div
+    class="dark:bg-gray-950 dark:text-white bg-gray-100 h-screen flex items-center justify-center"
+  >
+    <form
+      class="bg-gradient-to-b dark:to-gray-700 dark:from-gray-900 dark:text-white container p-6 rounded-lg shadow-2xl grid gap-5 lg:w-2/3 text-xl"
+    >
+      <h1 class="text-center font-thin text-3xl cursor-default">TODOLIST</h1>
+      <input
+        type="email"
+        [(ngModel)]="email"
+        name="email"
+        placeholder="Enter your email"
+        class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-800 text-xl lg:text-2xl"
+      />
+      <input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="Enter your password"
+        class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-800 text-xl lg:text-2xl"
+      />
+      <div class="flex justify-between items-center gap-2">
+        <button
+          (click)="registration()"
+          type="submit"
+          class="text-xs lg:text-2xl bg-lime-800 whitespace-nowrap text-white px-4 py-2 w-1/4 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
+        >
+          Sing Up
+        </button>
 
-      <label class="font-light text-xs lg:text-2xl"
-        >If you already have an account go to
-        <a
-          href="/login"
-          class="text-lime-600 hover:text-lime-500 hover:border-b-4 border-lime-300 duration-100"
-          >login page</a
-        ></label
-      >
-    </div>
-  </form>
-</div>
-<app-cookie-banner
-  class="absolute bottom-0 p-4 m-4 border shadow-xl z-50 w-5/6 lg:w-4/6"
-/>
+        <label class="font-light text-xs lg:text-2xl"
+          >If you already have an account go to
+          <a
+            href="/login"
+            class="text-lime-600 hover:text-lime-500 hover:border-b-4 border-lime-300 duration-100"
+            >login page</a
+          ></label
+        >
+      </div>
+    </form>
+  </div>
+  <app-cookie-banner
+    *ngIf="isBannerOpen"
+    class="dark:bg-gray-800 dark:text-white absolute bottom-0 p-4 m-4 border shadow-xl z-50 w-5/6 lg:w-4/6"
+  />
+</body>
