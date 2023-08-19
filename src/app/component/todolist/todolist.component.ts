@@ -25,16 +25,18 @@ export class TodolistComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    const defaultTheme = localStorage.getItem('theme');
+    if (defaultTheme === null) localStorage.setItem('theme', 'light');
+    else if (defaultTheme === 'dark') {
+      const body = document.getElementById('bodyTodoMain');
+      if (body) body.classList.add(`dark`);
+    }
     const isAuth = this.authService.isAuth();
     if (!isAuth) this.router.navigate(['/login']);
 
     this.form = new FormGroup({
       title: new FormControl('', Validators.required),
     });
-
-    const defaultTheme = localStorage.getItem('theme');
-    if (defaultTheme === null) localStorage.setItem('theme', 'light');
-
     this.getNotes();
   }
 
@@ -93,17 +95,15 @@ export class TodolistComponent implements OnInit {
     const theme = localStorage.getItem('theme');
 
     if (theme == 'light') {
-      const body = document.getElementById('bodyTodo');
+      const body = document.getElementById('bodyTodoMain');
       if (body) {
-        body.classList.add(`dark`);
-        body.classList.remove('light');
+        body.classList.replace('light', 'dark');
         localStorage.setItem('theme', 'dark');
       }
     } else if (theme == 'dark') {
-      const body = document.getElementById('bodyTodo');
+      const body = document.getElementById('bodyTodoMain');
       if (body) {
-        body.classList.add(`light`);
-        body.classList.remove('dark');
+        body.classList.replace('dark', 'light');
         localStorage.setItem('theme', 'light');
       }
     }

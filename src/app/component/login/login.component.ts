@@ -26,11 +26,14 @@ export class LoginComponent implements OnInit {
       } else this.isBannerOpen = true;
     }
 
-    for (let cookie of cookies) {
-      if (cookie.trim().startsWith('theme')) {
-        this.theme = cookie.slice('theme'.length + 2);
-        break;
-      }
+    const defaultTheme = localStorage.getItem('theme');
+    if (defaultTheme === null) localStorage.setItem('theme', 'light');
+    else if (defaultTheme === 'dark') {
+      let body = document.getElementById('bodyTodoLog');
+      if (body) body.classList.add('dark');
+    } else if (defaultTheme === 'light') {
+      const body = document.getElementById('bodyTodoLog');
+      if (body) body.classList.remove('dark');
     }
   }
 

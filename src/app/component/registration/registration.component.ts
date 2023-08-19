@@ -20,6 +20,16 @@ export class RegistrationComponent implements OnInit {
         break;
       } else this.isBannerOpen = true;
     }
+
+    const defaultTheme = localStorage.getItem('theme');
+    if (defaultTheme === null) localStorage.setItem('theme', 'light');
+    else if (defaultTheme === 'dark') {
+      let body = document.getElementById('bodyTodoReg');
+      if (body) body.classList.add('dark');
+    } else if (defaultTheme === 'light') {
+      const body = document.getElementById('bodyTodoReg');
+      if (body) body.classList.remove('dark');
+    }
   }
 
   async registration() {
