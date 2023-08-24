@@ -3,6 +3,7 @@ import { Note } from '../model/note';
 import { HttpClient } from '@angular/common/http';
 import { CreateResponse } from '../model/response';
 import { Observable, map, switchMap } from 'rxjs';
+import { UserData } from '../model/user-data';
 
 @Injectable({
   providedIn: 'root',
@@ -43,6 +44,24 @@ export class BdWorkService {
     return this.http.delete<Note>(
       `${BdWorkService.url}/${note.userId}/${note.id}.json`,
       { body: note }
+    );
+  }
+
+  getUserData(userId: string) {
+    this.http.get<UserData>(`${BdWorkService.url}/${userId}/userOptions.json`);
+  }
+
+  addUserData(userData: UserData) {
+    return this.http.post<UserData>(
+      `${BdWorkService.url}/${userData.userId}/userOptions.json`,
+      userData
+    );
+  }
+
+  updateData(userData: UserData) {
+    return this.http.put<UserData>(
+      `${BdWorkService.url}/${userData.userId}/userOptions.json`,
+      userData
     );
   }
 }

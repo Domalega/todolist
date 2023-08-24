@@ -4,19 +4,21 @@
     class="dark:bg-gray-950 dark:text-white bg-white h-screen flex flex-col justify-center items-center"
   >
     <h1 class="mt-32 text-center text-3xl font-thin">TODOLIST</h1>
-    <div class="shadow-lg max-h-[calc(90vh)] overflow-y-auto overflow-x-hidden">
+    <div
+      class="w-3/4 shadow-lg max-h-[calc(90vh)] overflow-y-auto overflow-x-hidden"
+    >
       <ul *ngIf="notes" class="items-center">
         <li
           [@slideOut]="noteToDelete === note ? 'out' : ''"
-          class="text-ellipsis note bg-gradient-to-r dark:to-gray-700 dark:from-gray-900 dark:text-white bg-white rounded-sm m-2 p-4 dark:border-b-0 border-b-4 active:ring-lime-600 flex items-center justify-between hover:scale-105 duration-300"
-          *ngFor="let note of notes; let i = index"
+          class="text-ellipsis note bg-gradient-to-r dark:to-gray-700 dark:from-gray-900 dark:text-white bg-white rounded-sm m-2 p-4 dark:border-b-0 border-b-4 active:ring-lime-600 flex items-center justify-between hover:scale-105 duration-300 gap-4"
+          *ngFor="let note of notes; let i = index; trackBy: trackByIdentifier"
         >
-          <span class="font-light text-xl"
+          <span class="font-light text-xl truncate"
             ><strong class="mr-2">{{ i + 1 }}</strong
             >{{ note.content }}</span
           >
           <button
-            class="lg:w-36 bg-lime-800 whitespace-nowrap text-white px-4 py-2 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
+            class="bg-lime-800 whitespace-nowrap text-white px-4 py-2 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
             (click)="deleteNote(note)"
           >
             Remove
@@ -26,11 +28,12 @@
     </div>
 
     <form
-      class="dark:bg-gray-900 dark:text-white m-2 p-4 flex items-center gap-2 ng-pristine ng-untouched ng-valid"
+      class="w-3/4 dark:bg-gray-900 dark:text-white m-2 p-4 flex items-center gap-2 ng-pristine ng-untouched ng-valid"
       (ngSubmit)="submit()"
       [formGroup]="form"
     >
       <input
+        autocomplete="off"
         formControlName="title"
         type="text"
         placeholder="Buy bread..."

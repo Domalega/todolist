@@ -77,6 +77,10 @@ export class TodolistComponent implements OnInit {
     });
   }
 
+  trackByIdentifier(index: number, note: Note) {
+    return note.id;
+  }
+
   getNotes() {
     const isAuth = this.authService.isAuth();
     if (!isAuth) this.router.navigate(['/login']);

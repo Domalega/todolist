@@ -15,7 +15,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { CookieBannerComponent } from './component/coockie-banner/coockie-banner.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavigationComponent } from './navigation/navigation.component';
+import { NavigationComponent } from './component/navigation/navigation.component';
 
 @NgModule({
   declarations: [
