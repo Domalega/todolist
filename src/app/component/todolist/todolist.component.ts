@@ -90,26 +90,4 @@ export class TodolistComponent implements OnInit {
         });
     });
   }
-
-  changeTheme() {
-    const theme = localStorage.getItem('theme');
-
-    if (theme == 'light') {
-      const body = document.getElementById('bodyTodoMain');
-      if (body) {
-        body.classList.replace('light', 'dark');
-        localStorage.setItem('theme', 'dark');
-      }
-    } else if (theme == 'dark') {
-      const body = document.getElementById('bodyTodoMain');
-      if (body) {
-        body.classList.replace('dark', 'light');
-        localStorage.setItem('theme', 'light');
-      }
-    }
-  }
-
-  logOut() {
-    this.authService.logOut();
-  }
 }

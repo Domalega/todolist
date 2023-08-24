@@ -5,12 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAuth, getAuth } from '@angular/fire/auth';
-import {
-  provideFirestore,
-  getFirestore,
-  Firestore,
-} from '@angular/fire/firestore';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { LoginComponent } from './component/login/login.component';
 import { RegistrationComponent } from './component/registration/registration.component';
 import { TodolistComponent } from './component/todolist/todolist.component';
@@ -20,6 +15,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { CookieBannerComponent } from './component/coockie-banner/coockie-banner.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RegistrationComponent,
     TodolistComponent,
     CookieBannerComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
