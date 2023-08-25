@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from '../../service/auth.service';
+import { UserOptionsService } from 'src/app/service/user-options.service';
 
 @Component({
   selector: 'app-navigation',
@@ -10,7 +11,10 @@ export class NavigationComponent implements OnInit {
   isMobile: boolean = true;
   width: number;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private userOption: UserOptionsService
+  ) {}
 
   ngOnInit(): void {
     this.width = window.innerWidth;
@@ -28,25 +32,7 @@ export class NavigationComponent implements OnInit {
   }
 
   changeTheme() {
-    const theme = localStorage.getItem('theme');
-    console.log(theme);
-    if (theme == 'light') {
-      const body = document.getElementById('bodyTodoMain');
-      console.log(body);
-      if (body) {
-        body.classList.remove('light');
-        body.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-      }
-    } else if (theme == 'dark') {
-      const body = document.getElementById('bodyTodoMain');
-      console.log(body);
-      if (body) {
-        body.classList.remove('dark');
-        body.classList.add('light');
-        localStorage.setItem('theme', 'light');
-      }
-    }
+    this.userOption.changeTheme();
   }
 
   showSideBar() {

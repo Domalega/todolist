@@ -1,0 +1,31 @@
+<div
+  class="w-screen h-screen bg-black fixed top-0 bg-opacity-50 flex items-center justify-center"
+  (click)="onCloseModal()"
+>
+  <div
+    (click)="handleClick($event)"
+    class="overflow-x-visible w-2/4 dark:text-white flex flex-col items-center justify-center relative bg-white dark:bg-gray-900 rounded-lg"
+  >
+    <button
+      class="absolute top-4 right-4 text-b text-xl"
+      (click)="onCloseModal()"
+    >
+      &#10005;
+    </button>
+    <div class="p-10 flex flex-col gap-4">
+      <h1 class="text-3xl">Yours note!</h1>
+      <div class="">
+        <p>
+          Content of note:
+          <span class="font-bold break-all">{{ selectedNote.content }}</span>
+        </p>
+      </div>
+      <div>
+        <p>
+          Date of the entry
+          <span class="font-bold">{{ selectedNote.date }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

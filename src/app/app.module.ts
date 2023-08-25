@@ -16,6 +16,7 @@ import { CookieBannerComponent } from './component/coockie-banner/coockie-banner
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './component/navigation/navigation.component';
+import { ModalComponent } from './component/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NavigationComponent } from './component/navigation/navigation.component
     TodolistComponent,
     CookieBannerComponent,
     NavigationComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

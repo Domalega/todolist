@@ -16,7 +16,9 @@ import { noteWorks } from '../../animation/notesWork';
 export class TodolistComponent implements OnInit {
   form: FormGroup;
   notes: Note[] | null = null;
+  selectedNote: Note;
   isSubmit: boolean = false;
+  isShowModal: boolean = false;
   noteToDelete: any;
 
   constructor(
@@ -94,5 +96,16 @@ export class TodolistComponent implements OnInit {
           this.notes = notesFromBD;
         });
     });
+  }
+
+  showModalInfo(event: any, note: Note) {
+    if (!event.target.classList.contains('remove-button')) {
+      this.selectedNote = note;
+      this.isShowModal = true;
+    }
+  }
+
+  onCloseModal() {
+    this.isShowModal = false;
   }
 }

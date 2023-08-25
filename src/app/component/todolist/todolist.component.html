@@ -9,16 +9,17 @@
     >
       <ul *ngIf="notes" class="items-center">
         <li
+          (click)="showModalInfo($event, note)"
           [@slideOut]="noteToDelete === note ? 'out' : ''"
           class="cursor-pointer text-ellipsis note bg-gradient-to-r dark:to-gray-700 dark:from-gray-900 dark:text-white bg-white rounded-sm m-2 p-4 dark:border-b-0 border-b-4 active:ring-lime-600 flex items-center justify-between hover:rounded-3xl duration-300 gap-4"
           *ngFor="let note of notes; let i = index; trackBy: trackByIdentifier"
         >
-          <span class="font-light text-xl truncate"
+          <span class="font-light text-xl break-all"
             ><strong class="mr-2">{{ i + 1 }}</strong
             >{{ note.content }}</span
           >
           <button
-            class="bg-lime-800 whitespace-nowrap text-white px-4 py-2 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
+            class="remove-button bg-lime-800 whitespace-nowrap text-white px-4 py-2 rounded-md hover:bg-lime-600 duration-100 active:scale-95"
             (click)="deleteNote(note)"
           >
             Remove
@@ -48,4 +49,10 @@
       </button>
     </form>
   </main>
+  <app-modal
+    *ngIf="isShowModal"
+    [selectedNote]="selectedNote"
+    [isShowModal]="isShowModal"
+    (closeModal)="onCloseModal()"
+  ></app-modal>
 </body>

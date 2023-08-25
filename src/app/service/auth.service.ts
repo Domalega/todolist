@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -56,7 +57,7 @@ export class AuthService {
     }
   }
 
-  getUserIdRXJS() {
+  getUserIdRXJS(): Observable<any> {
     return this.auth.authState;
   }
 
@@ -68,7 +69,7 @@ export class AuthService {
     return false;
   }
 
-  async resetPassword(email: string) {
+  async resetPassword(email: string): Promise<void> {
     try {
       await this.auth.sendPasswordResetEmail(email);
       alert(`Letter to change password was sent to ${email}`);
@@ -77,7 +78,7 @@ export class AuthService {
     }
   }
 
-  async logOut() {
+  async logOut(): Promise<void> {
     try {
       await this.auth.signOut();
       document.cookie =

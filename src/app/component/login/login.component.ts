@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
+import { UserOptionsService } from 'src/app/service/user-options.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,11 @@ export class LoginComponent implements OnInit {
   theme: string;
   isBannerOpen: boolean;
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private userOptions: UserOptionsService
+  ) {}
 
   ngOnInit() {
     const isAuth = this.auth.isAuth();
@@ -26,15 +31,7 @@ export class LoginComponent implements OnInit {
       } else this.isBannerOpen = true;
     }
 
-    const defaultTheme = localStorage.getItem('theme');
-    if (defaultTheme === null) localStorage.setItem('theme', 'light');
-    else if (defaultTheme === 'dark') {
-      let body = document.getElementById('bodyTodoLog');
-      if (body) body.classList.add('dark');
-    } else if (defaultTheme === 'light') {
-      const body = document.getElementById('bodyTodoLog');
-      if (body) body.classList.remove('dark');
-    }
+    this.userOptions.setDefaultTheme();
   }
 
   async login() {
