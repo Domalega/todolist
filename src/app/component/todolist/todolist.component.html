@@ -1,11 +1,11 @@
 <body id="bodyTodoMain">
-  <app-navigation></app-navigation>
   <main
     class="dark:bg-gray-950 dark:text-white bg-white h-screen flex flex-col justify-center items-center"
   >
-    <h1 class="mt-32 text-center text-3xl font-thin">TODOLIST</h1>
+    <app-navigation class="w-screen"></app-navigation>
+    <h1 class="mt-24 mb-10 text-center text-3xl font-thin">TODOLIST</h1>
     <div
-      class="w-3/4 shadow-lg max-h-[calc(90vh)] @apply overflow-y-auto overflow-x-hidden"
+      class="w-screen sm:w-3/4 shadow-lg max-h-[calc(90vh)] @apply overflow-y-auto overflow-x-hidden"
     >
       <ul *ngIf="notes" class="items-center">
         <li
@@ -29,7 +29,7 @@
     </div>
 
     <form
-      class="w-3/4 dark:bg-gray-900 dark:text-white m-2 p-4 flex items-center gap-2 ng-pristine ng-untouched ng-valid"
+      class="w-screen sm:w-3/4 dark:bg-gray-900 dark:text-white m-2 p-4 flex items-center gap-2 ng-pristine ng-untouched ng-valid"
       (ngSubmit)="submit()"
       [formGroup]="form"
     >
