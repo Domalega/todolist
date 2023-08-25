@@ -10,6 +10,7 @@ import { noteWorks } from '../../animation/notesWork';
 @Component({
   selector: 'app-todolist',
   templateUrl: './todolist.component.html',
+  styleUrls: [`./todolist.component.css`],
   animations: [noteWorks],
 })
 export class TodolistComponent implements OnInit {

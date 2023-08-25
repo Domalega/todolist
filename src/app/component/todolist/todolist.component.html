@@ -5,12 +5,12 @@
   >
     <h1 class="mt-32 text-center text-3xl font-thin">TODOLIST</h1>
     <div
-      class="w-3/4 shadow-lg max-h-[calc(90vh)] overflow-y-auto overflow-x-hidden"
+      class="w-3/4 shadow-lg max-h-[calc(90vh)] @apply overflow-y-auto overflow-x-hidden"
     >
       <ul *ngIf="notes" class="items-center">
         <li
           [@slideOut]="noteToDelete === note ? 'out' : ''"
-          class="text-ellipsis note bg-gradient-to-r dark:to-gray-700 dark:from-gray-900 dark:text-white bg-white rounded-sm m-2 p-4 dark:border-b-0 border-b-4 active:ring-lime-600 flex items-center justify-between hover:scale-105 duration-300 gap-4"
+          class="cursor-pointer text-ellipsis note bg-gradient-to-r dark:to-gray-700 dark:from-gray-900 dark:text-white bg-white rounded-sm m-2 p-4 dark:border-b-0 border-b-4 active:ring-lime-600 flex items-center justify-between hover:rounded-3xl duration-300 gap-4"
           *ngFor="let note of notes; let i = index; trackBy: trackByIdentifier"
         >
           <span class="font-light text-xl truncate"
